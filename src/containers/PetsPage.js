@@ -13,8 +13,18 @@ class PetsPage extends Component {
   }
 
   render() {
+    const { pets, match } = this.props;
+
     return (
-      <div>Pets Page</div>
+      <div>
+        <h3>Pets Page</h3>
+        <PetsList pets={pets} />
+        <Switch>
+          <Route path={`${match.url}/new`} component={PetsNew} />
+          <Route path={`${match.url}/:petId`} component={PetsShow} />
+        </Switch>
+      </div>
+
     )
   }
 };
